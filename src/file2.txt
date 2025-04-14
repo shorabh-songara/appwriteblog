@@ -4,3 +4,5 @@ i am adding footer section.
 
 fix pink mode .
 i am adding a new marketing section in file2 .
+
+fix message for purple mode .
