@@ -5,4 +5,7 @@ i am adding footer section.
 fix pink mode .
 i am adding a new marketing section in file2 .
 
-fix message for purple mode .
+fix message for purple mode.
+
+
+i make config email and name globly.
