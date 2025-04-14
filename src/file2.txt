@@ -9,3 +9,8 @@ fix message for purple mode.
 
 
 i make config email and name globly.
+
+
+i am adding some message for testing .
+
+i am adding some message for testing .
