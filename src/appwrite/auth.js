@@ -52,7 +52,7 @@ export class AuthSevice {
         return null;
     }
 
-    async logout({}){
+    async logout(){
         try {
             await this.account.deleteSessions();
         } catch (error) {

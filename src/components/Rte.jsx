@@ -1,19 +1,20 @@
 import React from "react";
-import { Editor } from "tinymce";
+import { Editor } from "@tinymce/tinymce-react";
 import { useForm , Controller } from "react-hook-form";
+import config from "../config/config";
 export default function Rte({
-    name , 
+    name, 
     control,
-    lable,
+    label,
     defaultValue = ""
 }){
     const {handleSubmit , Control } = useForm();
     return(
         <div className="w-full">
             {
-                lable && <lable className= "inline-block pl-2 mb-1">
-                    {lable}
-                </lable>
+                label && <label className= "inline-block pl-2 mb-1">
+                    {label}
+                </label>
             }
 
             <Controller
@@ -21,6 +22,7 @@ export default function Rte({
             control={control}
             render={({field : {onChange}})=> (
                 <Editor
+                apiKey={config.tinymceApiKey}
                 initialValue = {defaultValue}
                 init = {{
                     initialValue : defaultValue,

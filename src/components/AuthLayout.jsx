@@ -17,7 +17,7 @@ function AuthLayout({children , authentication=true}){
     },[authstatus , authentication , navigate])
     return(
         <div>
-
+            {children}
         </div>
     )
 }

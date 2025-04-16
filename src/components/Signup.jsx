@@ -2,6 +2,7 @@ import React , {useState} from "react";
 import auth from "../appwrite/auth";
 import {Input , Button , Logo} from './index'
 import { useDispatch } from "react-redux";
+import { login } from "../features/authSlice";
 import { useForm } from "react-hook-form";
 import { Link , useNavigate } from "react-router-dom";
 
@@ -16,15 +17,13 @@ function Signup(){
         try {
                 const userdata  = await auth.createAccount(data);
                 if (userdata) {
-                    const userdata = await auth.getCurrentUser()
-                    if (userdata) {
-                        dispatch(login(userdata))
-                    }
+                    const userdata = await auth.getCurrentUser();
+                    if (userdata) dispatch(login(userdata));
                     navigate("/");
-                    
                 }
             
         } catch (error) {
+            console.log("appwrite signup error :- " , error)
             setError(error.message);
         }
     }
@@ -40,7 +39,8 @@ function Signup(){
             <p>
                 Already have an account?&nbsp;
                 <Link
-                to= "/Login">
+                to= "/Login"
+                className="font-medium text-primary transition-all duration-200 hover:underline">
                 sign in
                 </Link>
             </p>
@@ -58,7 +58,6 @@ function Signup(){
                         })
                     }
                     />
-                    <Input/>
                     <Input 
                         lable = "Email:-"
                         placeholder= "Enter your Email"
@@ -79,18 +78,13 @@ function Signup(){
                     type = "password"
                     {...register("password" , {
                         required:true,
-                        validate:{
-                            length:8
-                        }
+                    
                     })}
                     />
 
-                    <Button
-                    children="sign-up"
-                    type = "submit"
-                    className="w-full">
-                        {children }
-                    </Button>
+                <Button type="submit" className="w-full">
+                sign-up
+                </Button>
 
 
                 </div>

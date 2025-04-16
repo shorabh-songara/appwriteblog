@@ -23,11 +23,8 @@ function Home(){
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-400">
                                 LOGIN TO READ POST
-
                             </h1>
-
                         </div>
-
                     </div>
                 </Container>
 

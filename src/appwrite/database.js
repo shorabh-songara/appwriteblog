@@ -9,13 +9,13 @@ export class BlogsAppwrtie{
     constructor(){
         this.client.setEndpoint(config.appwriteUrl).setProject(config.appwriteProjectId);
         this.databases = new Databases(this.client);
-        this.bucket = new Storage(this.client);
+        this.bucket = new Storage(this.client); 
     }
 
 
     async createPost({title , slug , content , featuredImg , status , userId }){
         try {
-            await this.databases.createDocument(
+            return await this.databases.createDocument(
                 config.appwriteDatabaseId,
                 config.appwriteCollectionId,
                 slug,
@@ -47,10 +47,8 @@ export class BlogsAppwrtie{
                     content,
                     featuredImg,
                     status,
-
                 }
             )
-            
         } catch (error) {
             console.log("appwrite  error :: updateddoc :--", error )
         }
@@ -126,15 +124,10 @@ export class BlogsAppwrtie{
     }
 
     getfilePrev(fileId){
-        try {
-            return this.bucket.getFilePreview(
-                config.appwriteBucketId,
-                fileId, 
-            )   
-        } catch (error) {
-            console.log("appwrite error :: getfilepreview :- ", error);
-            return false;
-        }
+        return this.bucket.getFilePreview(
+            config.appwriteBucketId,
+            fileId
+        );
     }
 
 }
